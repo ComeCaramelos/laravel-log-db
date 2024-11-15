@@ -10,6 +10,15 @@ class LogMessage extends Model
 {
     use MassPrunable;
 
+    protected $fillable = [
+        'level',
+        'level_name',
+        'message',
+        'created_at',
+        'context',
+        'extra',
+    ];
+
     /**
      * The attributes that aren't mass assignable.
      *
@@ -22,7 +31,7 @@ class LogMessage extends Model
      *
      * @var bool
      */
-    public $timestamps = false;
+    const UPDATED_AT = null;
 
     /**
      * The attributes that should be cast.
@@ -46,6 +55,6 @@ class LogMessage extends Model
      */
     public function prunable()
     {
-        return static::where('logged_at', '<=', now()->subDays(config('logging.channels.db.days')));
+        return static::where('created_at', '<=', now()->subDays(config('logging.channels.db.days')));
     }
 }

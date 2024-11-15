@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('level_name');
             $table->unsignedSmallInteger('level');
             $table->string('message');
-            $table->dateTime('logged_at');
+            $table->dateTime('created_at')->useCurrent();
             $table->json('context');
             $table->json('extra');
         });

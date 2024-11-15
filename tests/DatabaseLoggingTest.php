@@ -75,7 +75,7 @@ it('prunes old logs', function () {
         'level' => 200,
         'level_name' => 'INFO',
         'message' => 'Test message',
-        'logged_at' => now()->subDays(7),
+        'created_at' => now()->subDays(7),
         'context' => [],
         'extra' => [],
     ]);
@@ -96,7 +96,7 @@ it('doesnt prune new logs', function () {
         'level' => 200,
         'level_name' => 'INFO',
         'message' => 'Test message',
-        'logged_at' => now()->subDays(7)->addSecond(),
+        'created_at' => now()->subDays(7)->addSecond(),
         'context' => [],
         'extra' => [],
     ]);
